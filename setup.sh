@@ -20,12 +20,14 @@ fi
 
 # import 'gitlab_git_ssh_config'
 if ! [ -t gitlab_git_ssh_config ]; then 
-    #source <(curl -s "${DEVOPS_TOOLBOX_URL}/projects/git-ssh-config.sh");
+    echo '1';
+    source <(curl -s "${DEVOPS_TOOLBOX_URL}/projects/git-ssh-config.sh");
 fi
 
 # import 'gitlab_git_user_config'
 if ! [ -t gitlab_git_user_config ]; then 
-    #source <(curl -s "${DEVOPS_TOOLBOX_URL}/projects/git-user-config.sh");
+    echo '2';
+    source <(curl -s "${DEVOPS_TOOLBOX_URL}/projects/git-user-config.sh");
 fi
 
 #
@@ -34,17 +36,20 @@ fi
 
 # import 'gitlab_default_branch'
 if ! [ -t gitlab_default_branch ]; then 
-    #source <(curl -s "${DEVOPS_TOOLBOX_URL}/branches/default-branch.sh");
+    echo '3'; 
+    source <(curl -s "${DEVOPS_TOOLBOX_URL}/branches/default-branch.sh");
 fi
 
 # import 'gitlab_create_merge_request'
 if ! [ -t gitlab_create_merge_request ]; then 
-    #source <(curl -s "${DEVOPS_TOOLBOX_URL}/branches/create-merge-request.sh");
+    echo '4'; 
+    source <(curl -s "${DEVOPS_TOOLBOX_URL}/branches/create-merge-request.sh");
 fi
 
 # import 'gitlab_accept_merge_request'
 if ! [ -t gitlab_accept_merge_request ]; then 
-    #source <(curl -s "${DEVOPS_TOOLBOX_URL}/branches/accept-merge-request.sh");
+    echo '5'; 
+    source <(curl -s "${DEVOPS_TOOLBOX_URL}/branches/accept-merge-request.sh");
 fi
 
 #
@@ -53,5 +58,6 @@ fi
 
 # import 'gitlab_tag_release'
 if ! [ -t gitlab_tag_release ]; then 
-    #source <(curl -s "${DEVOPS_TOOLBOX_URL}/tags/tag-release.sh");
+    echo '6';
+    source <(curl -s "${DEVOPS_TOOLBOX_URL}/tags/tag-release.sh");
 fi
