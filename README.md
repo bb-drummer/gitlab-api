@@ -19,6 +19,7 @@ source <(curl -s https://gitlab.bjoernbartels.earth/devops/gitlab/api/raw/dev/se
 ## project related functions
 
 - [`gitlab_git_ssh_config`](./projects/git-ssh-config.sh) : configure (current) repository for ssh usage
+- [`gitlab_git_user_config`](./projects/git-user-config.sh) : set repository's user to (current) GitLab pipeline initiator
 
 
 

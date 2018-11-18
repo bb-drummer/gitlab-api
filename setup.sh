@@ -19,6 +19,11 @@ if ! [ -t gitlab_git_ssh_config ]; then
     source <(curl -s "${DEVOPS_TOOLBOX_URL}/projects/git-ssh-config.sh");
 fi
 
+# import 'gitlab_git_user_config'
+if ! [ -t gitlab_git_user_config ]; then 
+    source <(curl -s "${DEVOPS_TOOLBOX_URL}/projects/git-user-config.sh");
+fi
+
 #
 # branches stuff
 #

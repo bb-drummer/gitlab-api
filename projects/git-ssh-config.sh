@@ -17,10 +17,8 @@ gitlab_git_ssh_config () {
 
     # git config set origin git@gitlab....
     git remote add ${GIT_SSH_ORIGIN_NAME} ${GIT_SSH_URI}
-    git config user.email "${GITLAB_USER_EMAIL}"
-    git config user.name "${GITLAB_USER_NAME}"
 
-    echo -e "Setting repository's remote origin \e[96m'${GIT_SSH_ORIGIN_NAME}'\e[0m to \e[96m'${GIT_SSH_URI}'\e[0m'..."
+    echo -e "Setting repository's remote origin \e[96m'${GIT_SSH_ORIGIN_NAME}'\e[0m to \e[96m'${GIT_SSH_URI}'\e[0m'...\n"
     git config --list
 
 }
