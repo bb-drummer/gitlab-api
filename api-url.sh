@@ -57,7 +57,7 @@ if ! [ -t gitlap_api ]; then
     # ```bash
     # result=`gitlab_api '<api-command>' ['<curl-parameters...>']`
     # ```
-    gitlap_api() {
+    gitlap_api () {
         local httpmessage response
         
         httpmessage=`curl -i --silent "${GITLAB_API_URL}/$(<$1)" --header "PRIVATE-TOKEN:${GITLAB_PRIVATE_TOKEN} $(<$2)"`;
@@ -78,7 +78,7 @@ if ! [ -t gitlab_project_api ]; then
     # ```bash
     # result=`gitlab_project_api '<api-command>' ['<curl-parameters...>']`
     # ```
-    gitlab_project_api() {
+    gitlab_project_api () {
         local httpmessage response
         
         httpmessage=`curl -i --silent "${CI_PROJECT_API_URL}/$(<$1)" --header "PRIVATE-TOKEN:${GITLAB_PRIVATE_TOKEN} $(<$2)"`;
