@@ -63,7 +63,9 @@ if ! [ -t gitlab_api ]; then
         httpmessage=`curl -i --silent "${GITLAB_API_URL}/$1" --header "PRIVATE-TOKEN:${GITLAB_PRIVATE_TOKEN} $2"`;
         http_header_body response $httpmessage
 
-        if ! [ response[header][status] -eq 200 ]; then
+        echo "response: $response";
+        
+        if ! [ $response['header']['status'] -eq 200 ]; then
             echo -e "\e[91mERROR: GitLab API call failed...\n\n${httpmessage}\e[0m\n";
             exit 1;
         fi
