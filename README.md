@@ -11,8 +11,15 @@ source <(curl -s https://gitlab.bjoernbartels.earth/devops/gitlab/api/raw/dev/se
 
 ## API calls
 
-- [`gitlab_api`](./api-url.sh) : perform GitLab API call via `curl`
-- [`gitlab_project_api`](./api-url.sh) : perform GitLab project API call via `curl`
+- [`gitlab_api`](./api-url.sh#L57) : perform GitLab API call via `curl`
+- [`gitlab_project_api`](./api-url.sh#L78) : perform GitLab project API call via `curl`
+
+
+
+## project related functions
+
+- [`gitlab_git_ssh_config`](./projects/git-ssh-config.sh) : configure (current) repository for ssh usage
+- [`gitlab_git_user_config`](./projects/git-user-config.sh) : set repository's user to (current) GitLab pipeline initiator
 
 
 
