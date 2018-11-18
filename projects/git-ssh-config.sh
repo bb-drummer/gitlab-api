@@ -12,7 +12,7 @@ gitlab_git_ssh_config () {
     fi
 
     origin_name_param="$1";
-    if ! [ $origin_name_param == "" ]; then
+    if ! [ $origin_name_param -eq "" ]; then
        origin_name=$origin_name_param
     fi
 
