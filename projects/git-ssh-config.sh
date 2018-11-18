@@ -4,7 +4,7 @@ gitlab_git_ssh_config () {
 
     # get git ssh URI
     if [ -z $GIT_SSH_URI ]; then
-        export GIT_SSH_URI="${CI_PROJECT_URL/^https:\/\/i/git@}.git";
+        export GIT_SSH_URI="${CI_PROJECT_URL/^https:\/\//git@}.git";
     fi
 
     if [ -z $GIT_SSH_ORIGIN_NAME ]; then
