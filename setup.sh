@@ -11,6 +11,15 @@ if [ -z $CI_PROJECT_API_URL ] || [ -t gitlab_api ]; then
 fi
 
 #
+# projects stuff
+#
+
+# import 'gitlab_git_ssh_config'
+if ! [ -t gitlab_git_ssh_config ]; then 
+    source <(curl -s "${DEVOPS_TOOLBOX_URL}/projects/git-ssh-config.sh");
+fi
+
+#
 # branches stuff
 #
 

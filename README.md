@@ -16,6 +16,12 @@ source <(curl -s https://gitlab.bjoernbartels.earth/devops/gitlab/api/raw/dev/se
 
 
 
+## project related functions
+
+- [`gitlab_git_ssh_config`](./projects/git-ssh-config.sh) : configure (current) repository for ssh usage
+
+
+
 ## branch related functions
 
 - [`gitlab_default_branch`](./branches/default-branch.sh) : retrieve default branch for GitLab project
