@@ -11,8 +11,9 @@ gitlab_git_ssh_config () {
         export GIT_SSH_ORIGIN_NAME="pipeline-origin";
     fi
 
-    if ! [ $1 == "" ]; then
-       origin_name="$1"
+    origin_name_param="$1";
+    if ! [ $origin_name_param == "" ]; then
+       origin_name=$origin_name_param
     fi
 
     # git config set origin git@gitlab....
