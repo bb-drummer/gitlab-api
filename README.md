@@ -11,8 +11,8 @@ source <(curl -s https://gitlab.bjoernbartels.earth/devops/gitlab/api/raw/dev/se
 
 ## API calls
 
-- [`gitlab_api`](./api-url.sh) : perform GitLab API call via `curl`
-- [`gitlab_project_api`](./api-url.sh) : perform GitLab project API call via `curl`
+- [`gitlab_api`](./api-url.sh#L57) : perform GitLab API call via `curl`
+- [`gitlab_project_api`](./api-url.sh#L78) : perform GitLab project API call via `curl`
 
 
 
