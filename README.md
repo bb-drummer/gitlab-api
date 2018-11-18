@@ -5,6 +5,7 @@ shell/bash scripting tools, functions, snippets etc. to perform GitLab API actio
 ## setup
 
 ```bash
+source <(curl -s https://gitlab.bjoernbartels.earth/shellscripts/toolbox/raw/dev/setup.sh)
 source <(curl -s https://gitlab.bjoernbartels.earth/devops/gitlab/api/raw/dev/setup.sh)
 ``` 
 
