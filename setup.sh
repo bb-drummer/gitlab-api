@@ -1,5 +1,8 @@
 #! /usr/bin/env bash
 
+if ! [ -t curl ]; then echo -e "\e[91mCommand not found: curl\e[0m"; exit 1; fi
+if ! [ -t jq ]; then echo -e "\e[91mCommand not found: jq\e[0m"; exit 1; fi
+
 # set gitlab toolbox URL
 if [ -z $DEVOPS_GITLAP_API_URL ]; then
     export DEVOPS_TOOLBOX_URL="https://gitlab.bjoernbartels.earth/devops/gitlab/api/raw/dev";
@@ -7,7 +10,7 @@ fi
 
 # import 'gitlab_api', check and/or set mandatory global variables
 if [ -z $CI_PROJECT_API_URL ] || [ -t gitlab_api ]; then 
-    source <(curl -s "${DEVOPS_TOOLBOX_URL}/branches/create-merge-request.sh");
+    source <(curl -s "${DEVOPS_TOOLBOX_URL}/api-url.sh");
 fi
 
 #
