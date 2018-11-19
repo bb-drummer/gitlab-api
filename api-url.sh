@@ -60,11 +60,11 @@ if ! [ -t gitlab_api ]; then
     gitlab_api () {
         
         local httpmessage
-        httpmessage=`curl -i --silent "${GITLAB_API_URL}/$1" --header "PRIVATE-TOKEN:${GITLAB_PRIVATE_TOKEN} $2"`;
+        httpmessage=$(curl -i --silent "${GITLAB_API_URL}/$1" --header "PRIVATE-TOKEN:${GITLAB_PRIVATE_TOKEN}" ${@:2:99});
         
         echo -e "response:\n$httpmessage";
 
-        http_header_body responseHeader responseBody $httpmessage
+        http_header_body responseHeader responseBody "${httpmessage}"
 
         echo "response header: ${responseHeader[Status]}";
         
@@ -86,11 +86,11 @@ if ! [ -t gitlab_project_api ]; then
     gitlab_project_api () {
         
         local httpmessage
-        httpmessage=`curl -i --silent "${CI_PROJECT_API_URL}/$($1)" --header "PRIVATE-TOKEN:${GITLAB_PRIVATE_TOKEN} $($2)"`;
+        httpmessage=$(curl -i --silent "${CI_PROJECT_API_URL}/$1" --header "PRIVATE-TOKEN:${GITLAB_PRIVATE_TOKEN}" ${@:2:99});
         
         echo -e "response:\n$httpmessage";
 
-        http_header_body responseHeader responseBody $httpmessage
+        http_header_body responseHeader responseBody "${httpmessage}"
 
         echo "response header: ${responseHeader[Status]}";
 
