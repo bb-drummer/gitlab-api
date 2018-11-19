@@ -64,8 +64,8 @@ if ! [ -t gitlab_api ]; then
         
         http_header_body responseHeader responseBody "${httpmessage}"
 
-        echo -e "response header: ${responseHeader[Status]}";
-        echo -e "response body: ${responseBody}";
+        #echo -e "response header: ${responseHeader[Status]}";
+        #echo -e "response body: ${responseBody}";
         
         if ! [ "${responseHeader[Status]}" == "200" ]; then
             echo -e "\e[91mERROR: GitLab API call failed...\n\n${httpmessage}\e[0m\n";
@@ -89,8 +89,8 @@ if ! [ -t gitlab_project_api ]; then
         
         http_header_body responseHeader responseBody "${httpmessage}"
 
-        echo -e "response header: ${responseHeader[Status]}";
-        echo -e "response body: ${responseBody}";
+        #echo -e "response header: ${responseHeader[Status]}";
+        #echo -e "response body: ${responseBody}";
 
         if ! [ "${responseHeader[Status]}" == "200" ]; then
             echo -e "\e[91mERROR: GitLab project API call failed...\n\n${httpmessage}\e[0m\n";
