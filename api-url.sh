@@ -59,7 +59,7 @@ if ! [ -t gitlab_api ]; then
     # ```
     gitlab_api () {
         
-        httpmessage="$(`curl -i --silent "${GITLAB_API_URL}/$1" --header "PRIVATE-TOKEN:${GITLAB_PRIVATE_TOKEN} $2"`)";
+        httpmessage=`curl -i --silent "${GITLAB_API_URL}/$1" --header "PRIVATE-TOKEN:${GITLAB_PRIVATE_TOKEN} $2"`;
         
         echo "response: $httpmessage";
 
