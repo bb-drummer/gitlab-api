@@ -60,7 +60,7 @@ if ! [ -t gitlab_api ]; then
     gitlab_api () {
         
         local httpmessage
-        httpmessage=$(curl -i --silent "${GITLAB_API_URL}/$1" --header "PRIVATE-TOKEN:${GITLAB_PRIVATE_TOKEN}" ${@:2:99});
+        httpmessage=$(curl -i -L --silent "${GITLAB_API_URL}/$1" --header "PRIVATE-TOKEN:${GITLAB_PRIVATE_TOKEN}" ${@:2:99});
         
         echo -e "response:\n$httpmessage";
 
@@ -86,7 +86,7 @@ if ! [ -t gitlab_project_api ]; then
     gitlab_project_api () {
         
         local httpmessage
-        httpmessage=$(curl -i --silent "${CI_PROJECT_API_URL}/$1" --header "PRIVATE-TOKEN:${GITLAB_PRIVATE_TOKEN}" ${@:2:99});
+        httpmessage=$(curl -i -L --silent "${CI_PROJECT_API_URL}/$1" --header "PRIVATE-TOKEN:${GITLAB_PRIVATE_TOKEN}" ${@:2:99});
         
         echo -e "response:\n$httpmessage";
 
