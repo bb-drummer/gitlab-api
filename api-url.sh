@@ -55,7 +55,7 @@ fi
 if ! [ -t gitlab_api ]; then
 
     # ```bash
-    # result=`gitlab_api '<api-command>' ['<curl-parameters...>']`
+    # result=`gitlab_api <api-command> [<curl-parameters...>]`
     # ```
     gitlab_api () {
         
@@ -80,7 +80,7 @@ fi
 if ! [ -t gitlab_project_api ]; then
 
     # ```bash
-    # result=`gitlab_project_api '<api-command>' ['<curl-parameters...>']`
+    # result=`gitlab_project_api <api-command> [<curl-parameters...>]`
     # ```
     gitlab_project_api () {
         
