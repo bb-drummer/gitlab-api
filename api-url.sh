@@ -62,7 +62,7 @@ if ! [ -t gitlab_api ]; then
         local httpmessage
         httpmessage=$(curl -i -L --silent "${GITLAB_API_URL}/$1" --header "PRIVATE-TOKEN:${GITLAB_PRIVATE_TOKEN}" ${@:2:99});
         
-        $(http_header_body responseHeader responseBody "${httpmessage}")
+        http_header_body responseHeader responseBody "${httpmessage}"
 
         echo -e "response header: ${responseHeader[Status]}";
         echo -e "response body: ${responseBody}";
