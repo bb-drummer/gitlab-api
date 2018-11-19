@@ -19,11 +19,11 @@ test-src:
     #-
     - echo $(gitlab_api "projects" -X POST --data-url-encode="{\"name\":\"api-test-projekt\",\"path\":\"/devops\"}")
     #-
-    - gitlab_project_api
+    #- gitlab_project_api
     #-
-    - gitlab_project_api "repository/branches"
+    #- gitlab_project_api "repository/branches"
     #-
-    - gitlab_project_api "merge_requests"
+    #- gitlab_project_api "merge_requests"
     #-
     - gitlab_project_default_branch
   
