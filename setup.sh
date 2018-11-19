@@ -32,9 +32,9 @@ fi
 # branches stuff
 #
 
-# import 'gitlab_default_branch'
-if ! [ -t gitlab_default_branch ]; then 
-    source <(curl -s "${DEVOPS_TOOLBOX_URL}/branches/default-branch.sh");
+# import 'gitlab_project_default_branch'
+if ! [ -t gitlab_project_default_branch ]; then 
+    source <(curl -s "${DEVOPS_TOOLBOX_URL}/branches/project-default-branch.sh");
 fi
 
 # import 'gitlab_create_merge_request'

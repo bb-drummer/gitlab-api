@@ -19,7 +19,7 @@
 #
 ###
 
-gitlab_get_default_branch () {
+gitlab_project_default_branch () {
 
     local default_branch="";
 

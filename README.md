@@ -26,7 +26,7 @@ source <(curl -s https://gitlab.bjoernbartels.earth/devops/gitlab/api/raw/dev/se
 
 ## branch related functions
 
-- [`gitlab_default_branch`](./branches/default-branch.sh) : retrieve default branch for GitLab project
+- [`gitlab_project_default_branch`](./branches/project-default-branch.sh) : retrieve default branch for GitLab project
 - [`gitlab_create_merge_request`](./branches/create-merge-request.sh) : create new merge reqest in GitLab project
 - [`gitlab_accespt_merge_request`](./branches/accept-merge-request.sh) : accept a merge reqest in GitLab
 
