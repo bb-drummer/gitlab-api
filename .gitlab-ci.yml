@@ -17,7 +17,7 @@ test-src:
     #-
     - gitlab_api "projects"
     #-
-    - gitlab_api "projects" -X POST
+    - gitlab_api "projects" -X POST --data="name=api-test-projekt" --data="path=api-test-projekt"
     #-
     - gitlab_project_api
     #-
