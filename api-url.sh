@@ -60,13 +60,11 @@ if ! [ -t gitlab_api ]; then
     gitlab_api () {
         
         local httpmessage
-        #declare -A responseHeader
-
         httpmessage=$(curl -i -L --silent "${GITLAB_API_URL}/$1" --header "PRIVATE-TOKEN:${GITLAB_PRIVATE_TOKEN}" ${@:2:99});
         
         http_header_body responseHeader responseBody "${httpmessage}"
 
-        echo "response header: ${responseHeader[*]}";
+        echo "response header: ${responseHeader[Status]}";
         echo "response body: ${responseBody}";
         
         if ! [ "${responseHeader[Status]}" == "200" ]; then
