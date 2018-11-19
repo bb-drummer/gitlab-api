@@ -58,16 +58,12 @@ if ! [ -t gitlab_api ]; then
     # result=`gitlab_api <api-command> [<curl-parameters...>]`
     # ```
     gitlab_api () {
-        
         local httpmessage
         httpmessage=$(curl -i -L --silent "${GITLAB_API_URL}/$1" --header "PRIVATE-TOKEN:${GITLAB_PRIVATE_TOKEN}" ${@:2:99});
         
         http_header_body responseHeader responseBody "${httpmessage}"
-
-        #echo -e "response header: ${responseHeader[Status]}";
-        #echo -e "response body: ${responseBody}";
         
-        if ! [ "${responseHeader[Status]}" == "200" ]; then
+        if ! [[ "${responseHeader[Status]}" =~ "2[0-9]{2}" ]]; then
             echo -e "\e[91mERROR: GitLab API call failed...\n\n${httpmessage}\e[0m\n";
             #exit 1;
         fi
@@ -89,12 +85,9 @@ if ! [ -t gitlab_project_api ]; then
         
         http_header_body responseHeader responseBody "${httpmessage}"
 
-        #echo -e "response header: ${responseHeader[Status]}";
-        #echo -e "response body: ${responseBody}";
-
-        if ! [ "${responseHeader[Status]}" == "200" ]; then
+        if ! [[ "${responseHeader[Status]}" =~ "2[0-9]{2}" ]]; then
             echo -e "\e[91mERROR: GitLab project API call failed...\n\n${httpmessage}\e[0m\n";
-            #exit 1;
+            exit 1;
         fi
 
         echo ${responseBody};
