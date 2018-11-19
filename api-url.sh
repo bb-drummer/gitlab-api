@@ -67,7 +67,7 @@ if ! [ -t gitlab_api ]; then
 
         echo "response: $response";
         
-        if ! [ $response['header']['status'] -eq 200 ]; then
+        if ! [ ${${response['header']}['status']} -eq 200 ]; then
             echo -e "\e[91mERROR: GitLab API call failed...\n\n${httpmessage}\e[0m\n";
             exit 1;
         fi
