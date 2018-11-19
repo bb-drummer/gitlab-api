@@ -17,6 +17,8 @@ test-src:
     #-
     - gitlab_api "projects"
     #-
+    - gitlab_api "projects" -X POST
+    #-
     - gitlab_project_api
     #-
     - gitlab_project_api "repository/branches"
