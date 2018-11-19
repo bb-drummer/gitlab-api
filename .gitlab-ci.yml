@@ -17,7 +17,7 @@ test-src:
     #-
     - gitlab_api "projects"
     #-
-    - echo $(gitlab_api "projects" -X POST --data-url-encode="{\"name\":\"api-test-projekt\",\"path\":\"/devops\"}")
+    - echo $(gitlab_api "projects" -X POST --data-urlencode "{\"name\":\"api-test-projekt\",\"path\":\"/devops\"}")
     #-
     #- gitlab_project_api
     #-
