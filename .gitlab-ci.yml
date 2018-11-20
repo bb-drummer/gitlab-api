@@ -17,7 +17,7 @@ test-src:
     #-
     - gitlab_api "projects"
     #-
-    - gitlab_api "projects" -X POST --header 'Content-Type: application/json' --data-binary "{\"name\":\"api-test-projekt\",\"path\":\"/devops\"}"
+    - gitlab_api "projects" -X POST --header 'Content-Type\: application/json' --data-binary "{\"name\":\"api-test-projekt\",\"path\":\"/devops\"}"
     #-
     #- gitlab_project_api
     #-
