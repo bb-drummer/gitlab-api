@@ -17,7 +17,7 @@ test-src:
     #-
     - gitlab_api "projects"
     #-
-    - gitlab_api "projects" --data-urlencode "{\"name\":\"api-test-projekt\",\"path\":\"/devops\"}" -X POST
+    - gitlab_api "projects" --data-binary "{\"name\":\"api-test-projekt\",\"path\":\"/devops\"}" -X POST
     #-
     #- gitlab_project_api
     #-
