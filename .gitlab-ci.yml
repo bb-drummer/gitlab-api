@@ -9,6 +9,7 @@ test-src:
   script: 
     - source <(curl -s https://gitlab.bjoernbartels.earth/shellscripts/toolbox/raw/dev/setup.sh)
     - source <(curl -s https://gitlab.bjoernbartels.earth/devops/gitlab/api/raw/dev/setup.sh)
+    - export TIME_BRANCH_LABEL=$(TZ=Europe/Berlin date +%Y%m%d-%H%M-$CI_COMMIT_REF_NAME)
     #-
     - gitlab_git_user_config
     - gitlab_git_ssh_config
@@ -17,14 +18,15 @@ test-src:
     #-
     - gitlab_api "projects"
     #-
-    - export PROJECT_LABEL=$(TZ=Europe/Berlin date +%Y%m%d-%H%M-$CI_COMMIT_REF_NAME)
-    - gitlab_api "projects" -X POST --data-binary "{\"name\":\"api-test-projekt-${PROJECT_LABEL}\",\"path\":\"devops-${PROJECT_LABEL}\"}"
-    #-
     #- gitlab_project_api
     #-
     #- gitlab_project_api "repository/branches"
     #-
     #- gitlab_project_api "merge_requests"
     #-
+    - gitlab_api "projects" -X POST --data-binary "{\"name\":\"api-test-projekt-${TIME_BRANCH_LABEL}\",\"path\":\"api-test-projekt-${TIME_BRANCH_LABEL}\"}"
+    #-
     - gitlab_project_default_branch
+    #-
+    - gitlab_api "projects/api-test-projekt-${TIME_BRANCH_LABEL}" -X DELETE
   
