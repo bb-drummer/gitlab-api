@@ -24,9 +24,9 @@ test-src:
     #-
     #- gitlab_project_api "merge_requests"
     #-
-    - gitlab_api "projects" -X POST --data-binary "{\"name\":\"api-test-projekt-${TIME_BRANCH_LABEL}\",\"path\":\"api-test-projekt-${TIME_BRANCH_LABEL}\"}"
+    - export P_ID=$( json_value ".id" $( gitlab_api "projects" -X POST --data-binary "{\"name\":\"api-test-projekt-${TIME_BRANCH_LABEL}\",\"path\":\"api-test-projekt-${TIME_BRANCH_LABEL}\"}" ) )
     #-
     - gitlab_project_default_branch
     #-
-    - gitlab_api "projects/api-test-projekt-${TIME_BRANCH_LABEL}" -X DELETE
+    - gitlab_api "projects/api-test-projekt-${TIME_BRANCH_LABEL}" -X DELETE --data-binary "{\"id\": \"${P_ID}\"}"
   
