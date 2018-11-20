@@ -2,9 +2,12 @@
 
 shell/bash scripting tools, functions, snippets etc. to perform GitLab API actions
 
+
+
 ## setup
 
 ```bash
+source <(curl -s https://gitlab.bjoernbartels.earth/shellscripts/toolbox/raw/dev/setup.sh)
 source <(curl -s https://gitlab.bjoernbartels.earth/devops/gitlab/api/raw/dev/setup.sh)
 ``` 
 
@@ -25,15 +28,23 @@ source <(curl -s https://gitlab.bjoernbartels.earth/devops/gitlab/api/raw/dev/se
 
 ## branch related functions
 
-- [`gitlab_default_branch`](./branches/default-branch.sh) : retrieve default branch for GitLab project
+- [`gitlab_project_default_branch`](./branches/project-default-branch.sh) : retrieve default branch for GitLab project
 - [`gitlab_create_merge_request`](./branches/create-merge-request.sh) : create new merge reqest in GitLab project
 - [`gitlab_accespt_merge_request`](./branches/accept-merge-request.sh) : accept a merge reqest in GitLab
+- [`gitlab_open_merge_requests`](./branches/open-merge-request.sh) : retrieve a list of open merge reqests in GitLab
 
 
 
 ## tag related functions
 
 - [`gitlab_tag_release`](./tags/tag-release.sh) : turn a tag into GitLab release
+
+
+
+### further reading:
+
+- [GitLab CI documentation](https://docs.gitlab.com/ce/ci/)
+- [GitLab API documentation](https://docs.gitlab.com/ce/api/)
 
 
 ### status

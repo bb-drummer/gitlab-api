@@ -34,41 +34,41 @@ fi
 if [ -z $GITLAB_API_VERSION ]; then 
 
     export GITLAB_API_VERSION="v4"; 
-    echo -e "Setting GitLab API version: \e[96m$GITLAB_API_VERSION\e[0m\n";
+    echo -e "Setting GitLab API version: \e[96m${GITLAB_API_VERSION}\e[0m\n";
 
 fi
 
 if [[ $CI_PROJECT_URL =~ ^https?://[^/]+ ]] && [ -z $GITLAB_API_URL ]; then 
 
-    export GITLAB_API_URL="${BASH_REMATCH[0]}/api/$GITLAB_API_VERSION/";
-    echo -e "\e[96mSetting GitLab API URL: \e[96m$GITLAB_API_URL\e[0m\n";
+    export GITLAB_API_URL="${BASH_REMATCH[0]}/api/${GITLAB_API_VERSION}/";
+    echo -e "\e[96mSetting GitLab API URL: \e[96m${GITLAB_API_URL}\e[0m\n";
 
 fi
 
 if [ -z $CI_PROJECT_API_URL ]; then 
 
-    export CI_PROJECT_API_URL="$GITLAB_API_URL/projects/$CI_PROJECT_ID/";
-    echo -e "\e[96mSetting GitLab project API URL: \e[96m$CI_PROJECT_API_URL\e[0m\n";
+    export CI_PROJECT_API_URL="${GITLAB_API_URL}projects/${CI_PROJECT_ID}/";
+    echo -e "\e[96mSetting GitLab project API URL: \e[96m${CI_PROJECT_API_URL}\e[0m\n";
 
 fi
 
-if ! [ -t gitlap_api ]; then
+if ! [ -t gitlab_api ]; then
 
     # ```bash
-    # result=`gitlab_api '<api-command>' ['<curl-parameters...>']`
+    # result=`gitlab_api <api-command> [<curl-parameters...>]`
     # ```
-    gitlap_api() {
-        local httpmessage response
+    gitlab_api () {
+        local httpmessage
+        httpmessage=$(curl -i -L --silent "${GITLAB_API_URL}/$1" --header "PRIVATE-TOKEN:${GITLAB_PRIVATE_TOKEN}" --header "Content-Type: application/json" ${@:2:99});
         
-        httpmessage=`curl -i --silent "${GITLAB_API_URL}/$(<$1)" --header "PRIVATE-TOKEN:${GITLAB_PRIVATE_TOKEN} $(<$2)"`;
-        http_header_body response $httpmessage
-
-        if ! [ response[header][status] -eq 200 ]; then
+        http_header_body responseHeader responseBody "${httpmessage}"
+        
+        if ! [[ ${responseHeader[Status]} =~ ^[2][0-9][0-9]$ ]]; then
             echo -e "\e[91mERROR: GitLab API call failed...\n\n${httpmessage}\e[0m\n";
             exit 1;
         fi
 
-        echo response[body];
+        echo ${responseBody};
     }
 
 fi
@@ -76,20 +76,21 @@ fi
 if ! [ -t gitlab_project_api ]; then
 
     # ```bash
-    # result=`gitlab_project_api '<api-command>' ['<curl-parameters...>']`
+    # result=`gitlab_project_api <api-command> [<curl-parameters...>]`
     # ```
-    gitlab_project_api() {
-        local httpmessage response
+    gitlab_project_api () {
         
-        httpmessage=`curl -i --silent "${CI_PROJECT_API_URL}/$(<$1)" --header "PRIVATE-TOKEN:${GITLAB_PRIVATE_TOKEN} $(<$2)"`;
-        http_header_body response $httpmessage
+        local httpmessage
+        httpmessage=$(curl -i -L --silent "${CI_PROJECT_API_URL}/$1" --header "PRIVATE-TOKEN:${GITLAB_PRIVATE_TOKEN}" --header "Content-Type: application/json" ${@:2:99});
+        
+        http_header_body responseHeader responseBody "${httpmessage}"
 
-        if ! [ response[header][status] -eq 200 ]; then
+        if ! [ "${responseHeader[Status]}" == "200" ]; then
             echo -e "\e[91mERROR: GitLab project API call failed...\n\n${httpmessage}\e[0m\n";
             exit 1;
         fi
 
-        echo response[body];
+        echo ${responseBody};
     }
 
 fi
