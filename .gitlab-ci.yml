@@ -17,8 +17,8 @@ test-src:
     #-
     - gitlab_api "projects"
     #-
-    - project_name="api-test-projekt-$(TZ=Europe/Berlin date +%Y%m%d-%H%M-$CI_COMMIT_REF_NAME)"
-    - gitlab_api "projects" -X POST --data-binary "{\"name\":\"${project_name}\",\"path\":\"devops\"}"
+    - project_label="$(TZ=Europe/Berlin date +%Y%m%d-%H%M-$CI_COMMIT_REF_NAME)"
+    - gitlab_api "projects" -X POST --data-binary "{\"name\":\"api-test-projekt-${project_name}\",\"path\":\"devops-project_label\"}"
     #-
     #- gitlab_project_api
     #-
